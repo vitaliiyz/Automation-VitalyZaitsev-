@@ -17,7 +17,7 @@ public class Lecture_4 {
 
     @BeforeMethod
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\abookBY\\IdeaProjects\\AutomationVitalyZaitsev\\src\\main\\resources\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
         driver = new ChromeDriver();
         webDriverWait = new WebDriverWait(driver, 10);
         driver.get("https://www.google.com/");
