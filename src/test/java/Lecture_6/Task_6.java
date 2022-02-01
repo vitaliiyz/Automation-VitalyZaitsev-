@@ -48,7 +48,7 @@ public class Task_6 {
         String productNameOnProductPage = driver.findElement(By.xpath("//div[contains(@class, 'name large_size')]")).getText();
         WebElement addToCartBtn = driver.findElement(By.xpath("//button[text()='Add to cart']"));
         WebElement cartLink = driver.findElement(By.cssSelector(".shopping_cart_link"));
-        WebElement productPrice = driver.findElement(By.cssSelector("[class$=price]"));
+        String productPrice = driver.findElement(By.cssSelector("[class$=price]")).getText();
         Assert.assertEquals(productNameOnProductPage, productName); //Compare product name on inventory page and product page
         //Actions on the product page
         addToCartBtn.click();
@@ -57,11 +57,11 @@ public class Task_6 {
         //Go to the cart page
         cartLink.click();
         WebElement cartTitle = driver.findElement(By.cssSelector("[class='title']"));
-        WebElement productPriceOnCartPage = driver.findElement(By.cssSelector("[class^=inventory_item_p]"));
+        String productPriceOnCartPage = driver.findElement(By.cssSelector("[class^=inventory_item_p]")).getText();
         WebElement productNameOnCartPage = driver.findElement(By.partialLinkText("Sauce"));
         Assert.assertEquals(cartTitle.getText(),"YOUR CART");
         Assert.assertEquals(productNameOnCartPage.getText(),productName);
-        Assert.assertEquals(productPriceOnCartPage.getText(), productPrice.getText());
+        Assert.assertEquals(productPriceOnCartPage, productPrice);
     }
 
     @AfterTest
