@@ -11,15 +11,17 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
+
 public class Lecture_4 {
     private WebDriver driver;
     private WebDriverWait webDriverWait;
 
     @BeforeMethod
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\abookBY\\IdeaProjects\\AutomationVitalyZaitsev\\src\\main\\resources\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
         driver = new ChromeDriver();
-        webDriverWait = new WebDriverWait(driver, 10);
+        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.get("https://www.google.com/");
         driver.manage().window().maximize();
     }
