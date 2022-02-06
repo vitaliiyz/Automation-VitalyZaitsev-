@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Lecture_7">
+    <parameter name="browser" value="CHROME"/>
+    <parameter name="url" value="http://the-internet.herokuapp.com/"/>
+
+    <test name="Lecture_7">
+        <classes>
+            <class name="Lecture_7.Lecture_7"/>
+        </classes>
+    </test>
+</suite>
