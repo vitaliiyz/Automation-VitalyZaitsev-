@@ -4,11 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.locators.RelativeLocator;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
 
 
 public class Task_6 {
@@ -36,7 +36,7 @@ public class Task_6 {
         Assert.assertEquals(driver.getCurrentUrl(), "https://www.saucedemo.com/inventory.html");
     }
 
-    @Test
+    @Test(priority = 1)
     public void addProductToCart() {
         login();
         //Elements on the main page
@@ -59,9 +59,17 @@ public class Task_6 {
         WebElement cartTitle = driver.findElement(By.cssSelector("[class='title']"));
         String productPriceOnCartPage = driver.findElement(By.cssSelector("[class^=inventory_item_p]")).getText();
         WebElement productNameOnCartPage = driver.findElement(By.partialLinkText("Sauce"));
-        Assert.assertEquals(cartTitle.getText(),"YOUR CART");
-        Assert.assertEquals(productNameOnCartPage.getText(),productName);
+        Assert.assertEquals(cartTitle.getText(), "YOUR CART");
+        Assert.assertEquals(productNameOnCartPage.getText(), productName);
         Assert.assertEquals(productPriceOnCartPage, productPrice);
+    }
+
+    @Test(priority = 2)
+    public void relativeLocators() {
+        login();
+        WebElement productName = driver.findElement(By.className("inventory_item_name"));
+        WebElement productDescription = driver.findElement(RelativeLocator.with(By.className("inventory_item_desc")).below(productName));
+        Assert.assertEquals(productDescription.getText(), "carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.");
     }
 
     @AfterTest
