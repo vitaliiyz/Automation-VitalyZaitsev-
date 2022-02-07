@@ -40,18 +40,18 @@ public class Task_6 {
     public void addProductToCart() {
         login();
         //Elements on the main page
-        WebElement productLink = driver.findElement(By.linkText("Sauce Labs Backpack"));
+        WebElement productLink = driver.findElement(By.xpath("//div[@class='inventory_item_img']/following::*[text()='Sauce Labs Backpack']"));
         String productName = driver.findElement(By.className("inventory_item_name")).getText();
         //Go to the product page
         productLink.click();
         //Elements on the product page
         String productNameOnProductPage = driver.findElement(By.xpath("//div[contains(@class, 'name large_size')]")).getText();
-        WebElement addToCartBtn = driver.findElement(By.xpath("//button[text()='Add to cart']"));
-        WebElement cartLink = driver.findElement(By.cssSelector(".shopping_cart_link"));
+        WebElement addToCartBtn = driver.findElement(By.xpath("//button[@class='btn btn_primary btn_small btn_inventory' and @name='add-to-cart-sauce-labs-backpack']"));
         String productPrice = driver.findElement(By.cssSelector("[class$=price]")).getText();
         Assert.assertEquals(productNameOnProductPage, productName); //Compare product name on inventory page and product page
         //Actions on the product page
         addToCartBtn.click();
+        WebElement cartLink = driver.findElement(By.xpath("//span[@class='shopping_cart_badge']/ancestor::a"));
         WebElement removeBtn = driver.findElement(By.cssSelector("button.btn_small"));
         Assert.assertEquals(removeBtn.getText(), "REMOVE");
         //Go to the cart page
