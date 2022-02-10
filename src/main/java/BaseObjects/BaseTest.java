@@ -15,7 +15,7 @@ public class BaseTest {
     @BeforeTest
     public void precondition(ITestContext context) {
         this.context = context;
-        driver = getDriver(DriverCreation.Drivers.valueOf(context.getSuite().getParameter("browser")));
+        driver = getDriver();
     }
 
     @AfterTest
