@@ -7,11 +7,13 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Homework_8 extends BaseTest {
 
-    @Test
+    @Test(enabled = false)
     public void htmlFileTest() {
         driver.get("C:\\Users\\abookBY\\IdeaProjects\\AutomationVitalyZaitsev\\src\\test\\java\\Lecture_8\\Index.html");
         //Elements
@@ -33,5 +35,20 @@ public class Homework_8 extends BaseTest {
         link.click();
         String newPageUrl = driver.getCurrentUrl();
         Assert.assertEquals(newPageUrl, "https://www.w3schools.com/");
+    }
+
+    @Test
+    public void tableTest() {
+        driver.get("C:\\Users\\abookBY\\IdeaProjects\\AutomationVitalyZaitsev\\src\\test\\java\\Lecture_8\\Index.html");
+
+        List<String> rows = driver.findElements(By.tagName("tr")).stream().map(WebElement::getText).collect(Collectors.toList());
+
+        List<List<String>> tableData = new ArrayList<List<String>>();
+
+        for (int i = 0; i < rows.size(); i++) {
+            List<String> cell = driver.findElements(By.xpath("//tr[" + (i + 1) + "]/*")).stream().map(WebElement::getText).collect(Collectors.toList());
+            tableData.add(cell);
+        }
+        System.out.println(tableData);
     }
 }
