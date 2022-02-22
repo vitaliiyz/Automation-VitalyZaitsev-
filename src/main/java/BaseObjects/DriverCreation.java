@@ -1,23 +1,23 @@
 package BaseObjects;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.github.bonigarcia.wdm.config.DriverManagerType;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 public class DriverCreation {
-    private static WebDriver driver;
+    private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
-    public static WebDriver getDriver() {
-        if(driver == null) {
-            WebDriverManager.chromedriver().setup();
-            driver = new ChromeDriver();
-            driver.manage().window().maximize();
+    public static void createDriver() {
+        if (driver.get() == null) {
+            driver.set(WebDriverManager.getInstance(DriverManagerType.CHROME).create());
         }
-        return driver;
     }
 
-    public static void closeDriver(){
-        driver.close();
-        driver.quit();
+    public static WebDriver getDriver() {
+        return driver.get();
+    }
+
+    public static void closeDriver() {
+        WebDriverManager.getInstance(DriverManagerType.CHROME).quit();
     }
 }
