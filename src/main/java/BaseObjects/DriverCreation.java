@@ -8,14 +8,15 @@ public class DriverCreation {
     private static WebDriver driver;
 
     public static WebDriver getDriver() {
-        if(driver == null) {
+        if (driver == null) {
             WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
+            driver.manage().window().maximize();
         }
         return driver;
     }
 
-    public static void closeDriver(){
+    public static void closeDriver() {
         driver.close();
         driver.quit();
     }
