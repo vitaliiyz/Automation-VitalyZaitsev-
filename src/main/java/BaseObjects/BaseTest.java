@@ -5,8 +5,7 @@ import org.testng.ITestContext;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
-import static BaseObjects.DriverCreation.closeDriver;
-import static BaseObjects.DriverCreation.getDriver;
+import static BaseObjects.DriverCreation.*;
 
 public class BaseTest {
     protected WebDriver driver;
@@ -15,7 +14,9 @@ public class BaseTest {
     @BeforeTest
     public void precondition(ITestContext context) {
         this.context = context;
+        createDriver();
         driver = getDriver();
+        driver.manage().window().maximize();
     }
 
     @AfterTest
