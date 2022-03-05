@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Lecture_10">
+
+    <test name="Lecture_10">
+        <classes>
+            <class name="Lecture_10.Lecture_10"/>
+        </classes>
+    </test>
+
+    <!-- <test name="Lecture_10.1">
+        <groups>
+            <run>
+                <include name="login"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="Lecture_10.Lecture_10"/>
+        </classes>
+    </test>
+
+    <test name="Lecture_10.2">
+        <groups>
+            <run>
+                <include name="products"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="Lecture_10.Lecture_10"/>
+        </classes>
+    </test> -->
+</suite>
