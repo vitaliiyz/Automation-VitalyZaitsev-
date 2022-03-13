@@ -22,13 +22,9 @@ public class BaseTest {
     }
 
     protected <T> T getPage(Class<T> page) {
-        return getPage(page, this.driver);
-    }
-
-    protected <T> T getPage(Class<T> page, WebDriver driver) {
         T instance = null;
         try {
-            instance = page.getDeclaredConstructor(WebDriver.class).newInstance(driver);
+            instance = page.getDeclaredConstructor().newInstance();
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
             e.printStackTrace();
         }

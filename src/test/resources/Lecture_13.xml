@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Lecture_13">
+    <parameter name="browser" value="CHROME"/>
+    <parameter name="url" value="http://the-internet.herokuapp.com/"/>
+
+    <test name="iFrame">
+        <parameter name="linkName" value="FRAMES"/>
+        <classes>
+            <class name="Lecture_13.HomePageTest"/>
+            <class name="Lecture_13.FramesPageTest"/>
+        </classes>
+    </test>
+
+    <test name="JavascriptAlerts">
+        <parameter name="linkName" value="JAVASCRIPT_ALERTS"/>
+        <classes>
+            <class name="Lecture_13.HomePageTest"/>
+            <class name="Lecture_13.JavascriptAlertsTest"/>
+        </classes>
+    </test>
+</suite>

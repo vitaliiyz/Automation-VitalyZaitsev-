@@ -3,7 +3,9 @@ package Herokuapp.Pages;
 public enum HomeLinks {
     CONTEXT_MENU("Context Menu"),
     DYNAMIC_CONTROLS("Dynamic Controls"),
-    FILE_UPLOAD("File Upload");
+    FILE_UPLOAD("File Upload"),
+    FRAMES("Frames"),
+    JAVASCRIPT_ALERTS("JavaScript Alerts");
 
     String link;
 
