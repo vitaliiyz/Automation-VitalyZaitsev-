@@ -1,7 +1,9 @@
 package Herokuapp;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
@@ -14,6 +16,7 @@ public abstract class BasePage {
     protected Actions actions;
     protected WebDriverWait wait;
     protected JavascriptExecutor js;
+    protected Logger logger = Logger.getLogger(BasePage.class);
 
     protected BasePage() {
         this.driver = getDriver();
@@ -57,8 +60,33 @@ public abstract class BasePage {
     }
 
     public BasePage checkWebpageTitle(String expectedTitle) {
-        String webPageTitle =  js.executeScript("return document.title;").toString();
+        String webPageTitle = js.executeScript("return document.title;").toString();
         Assert.assertEquals(webPageTitle, expectedTitle);
+        return this;
+    }
+
+    protected BasePage elementLocatedWait(By element) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(element));
+        return this;
+    }
+
+    protected BasePage assertEquals(By element, String expected) {
+        Assert.assertEquals(findElement(element).getText(), expected);
+        return this;
+    }
+
+    protected BasePage assertTrue(Boolean actualResult) {
+        Assert.assertTrue(actualResult);
+        return this;
+    }
+
+    protected BasePage assertFalse(Boolean actualResult) {
+        Assert.assertFalse(actualResult);
+        return this;
+    }
+
+    protected BasePage click(By element) {
+        findElement(element).click();
         return this;
     }
 
