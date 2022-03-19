@@ -2,15 +2,10 @@ package SaucedemoPageObject.Pages;
 
 import SaucedemoPageObject.BasePage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 public class InventoryPage extends BasePage {
-
-    public InventoryPage(WebDriver driver) {
-        super(driver);
-    }
 
     private final By addToCartButton = By.xpath("//button[text()='Add to cart']");
     private final By shoppingCartLink = By.className("shopping_cart_link");
