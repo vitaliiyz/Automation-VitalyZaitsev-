@@ -19,7 +19,9 @@ public class Lecture_10 extends BaseTest {
     @Test(groups = "login", dataProvider = "getCorrectLoginData", priority = 0, timeOut = 5000,
             description = "Positive login test")
     public void positiveLoginTest(String username, String password) {
-        getPage(LoginPage.class).positiveLoginTest(username, password);
+        getPage(LoginPage.class)
+                .login(username, password)
+                .verifyErrorMsg();
     }
 
     @Description("Products")
@@ -64,7 +66,9 @@ public class Lecture_10 extends BaseTest {
     @Attachment(value = "screenshot", type = "image/png")
     @Test(dataProvider = "getIncorrectLoginData", priority = 2, description = "Negative login test")
     public void negativeLoginTest(String username, String password) {
-        getPage(LoginPage.class).negativeLoginTest(username, password);
+        getPage(LoginPage.class)
+                .login(username, password)
+                .verifyErrorMsg();
     }
 
     @DataProvider

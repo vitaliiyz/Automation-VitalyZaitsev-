@@ -3,16 +3,26 @@ package SaucedemoPageObject.Pages;
 import SaucedemoPageObject.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
 public class LoginPage extends BasePage {
+
     public LoginPage(WebDriver driver) {
-        super(driver);
+        PageFactory.initElements(driver, this);
     }
 
-    private final By usernameField = By.id("user-name");
-    private final By passwordField = By.id("password");
-    private final By loginButton = By.id("login-button");
+    @FindBy(how = How.CSS, using = "[id = user-name]")
+    WebElement usernameField;
+
+    @FindBy(id = "password")
+    WebElement passwordField;
+
+    @FindBy(id = "login-button")
+    WebElement loginButton;
 
     private final By errorMsg = By.tagName("h3");
 
@@ -50,20 +60,29 @@ public class LoginPage extends BasePage {
 
     public LoginPage login(String username, String password) {
         getPage();
-        enterText(usernameField, username);
-        enterText(passwordField, password);
-        click(loginButton);
+        enterTextToField(usernameField, username);
+        enterTextToField(passwordField, password);
+        loginButton.click();
         return this;
     }
 
-    public LoginPage positiveLoginTest(String username, String password) {
-        login(username, password);
-        Assert.assertEquals(driver.getCurrentUrl(), "https://www.saucedemo.com/inventory.html");
+    public LoginPage loginByValueObject(UserData userData) {
+        getPage();
+        enterTextToField(usernameField, userData.getUserName());
+        enterTextToField(passwordField, userData.getPassword());
+        loginButton.click();
         return this;
     }
 
-    public LoginPage negativeLoginTest(String username, String password) {
-        login(username, password);
+    public LoginPage loginByBuilder(User user) {
+        getPage();
+        enterTextToField(usernameField, user.getUserName());
+        enterTextToField(passwordField, user.getPassword());
+        loginButton.click();
+        return this;
+    }
+
+    public LoginPage verifyErrorMsg() {
         Assert.assertEquals(getErrorMsgText(), incorrectCredentialsError);
         return this;
     }

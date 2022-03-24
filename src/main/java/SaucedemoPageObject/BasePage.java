@@ -1,18 +1,18 @@
 package SaucedemoPageObject;
 
-import SaucedemoPageObject.Pages.InventoryPage;
+import BaseObjects.DriverCreation;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class BasePage {
+public abstract class BasePage {
     protected WebDriver driver;
 
     private final By productName = By.className("inventory_item_name");
     private final By productPrice = By.className("inventory_item_price");
 
-    protected BasePage(WebDriver driver) {
-        this.driver = driver;
+    protected BasePage() {
+        this.driver = DriverCreation.getDriver();
     }
 
     protected WebElement findElement(By element) {
@@ -21,6 +21,10 @@ public class BasePage {
 
     protected void enterText(By element, String text) {
         findElement(element).sendKeys(text);
+    }
+
+    protected void enterTextToField(WebElement element, String text) {
+        element.sendKeys(text);
     }
 
     protected void click(By element) {
