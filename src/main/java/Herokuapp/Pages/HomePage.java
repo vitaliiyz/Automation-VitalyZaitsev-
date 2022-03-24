@@ -9,6 +9,7 @@ public class HomePage extends BasePage {
     private final By title = By.tagName("h1");
 
     public HomePage open(String url) {
+        logger.debug("Open page: " + url);
         super.open(url);
         return this;
     }
