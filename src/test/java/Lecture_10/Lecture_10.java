@@ -16,10 +16,11 @@ public class Lecture_10 extends BaseTest {
     @Issue("SD-0001")
     @TmsLink("SDTest-0001")
     @Attachment(value = "screenshot", type = "image/png")
-    @Test(groups = "login", dataProvider = "getCorrectLoginData", priority = 0, timeOut = 5000,
+    @Test(groups = "login", dataProvider = "getCorrectLoginData", priority = 1, timeOut = 5000,
             description = "Positive login test")
     public void positiveLoginTest(String username, String password) {
         getPage(LoginPage.class)
+                .getPage()
                 .login(username, password)
                 .verifyErrorMsg();
     }
@@ -30,7 +31,7 @@ public class Lecture_10 extends BaseTest {
     @Issue("SD-0002")
     @TmsLink("SDTest-0002")
     @Attachment(value = "screenshot", type = "image/png")
-    @Test(priority = 1, invocationCount = 2, groups = "products", dependsOnMethods = "positiveLoginTest",
+    @Test(priority = 2, invocationCount = 2, groups = "products", dependsOnMethods = "positiveLoginTest",
             description = "add 1 product to cart and remove test", alwaysRun = true)
     public void addProductToCartAndDeleteTest() {
         getPage(InventoryPage.class).addProductToCartTest();
