@@ -4,9 +4,7 @@ import BaseObjects.SelenideBaseTest;
 import MoodPanda.Pages.SignUpPage;
 import MoodPanda.Pages.UserData;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import static com.codeborne.selenide.Selenide.*;
 
 public class SignUp_Test extends SelenideBaseTest {
 
@@ -19,8 +17,6 @@ public class SignUp_Test extends SelenideBaseTest {
 
     @Test(description = "Sign Up with incorrect email")
     public void incorrectSignUp() {
-        open("https://moodpanda.com/signup");
-
         userData.setFirstName("Vitaly");
         userData.setLastName("Z");
         userData.setEmail("email");
