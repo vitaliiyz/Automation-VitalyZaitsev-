@@ -3,25 +3,13 @@ package Lecture_18;
 import BaseObjects.SelenideBaseTest;
 import MoodPanda.Pages.SignUpPage;
 import MoodPanda.Pages.UserData;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class SignUp_Test extends SelenideBaseTest {
 
-    UserData userData;
-
-    @BeforeMethod
-    public void precondition() {
-        userData = new UserData();
-    }
-
-    @Test(description = "Sign Up with incorrect email")
-    public void incorrectSignUp() {
-        userData.setFirstName("Vitaly");
-        userData.setLastName("Z");
-        userData.setEmail("email");
-        userData.setPassword("user1234");
-
+    @Test(description = "Sign Up with incorrect email", dataProvider = "userData")
+    public void incorrectSignUp(UserData userData) {
         getPage(SignUpPage.class)
                 .enterFirstName(userData.getFirstName())
                 .enterLastName(userData.getLastName())
@@ -31,6 +19,19 @@ public class SignUp_Test extends SelenideBaseTest {
                 .clickSignUpButton()
                 .clickSignUpButton()
                 .verifyErrorEmailNotification("Invalid email address");
+    }
+
+    @DataProvider
+    public Object[][] userData() {
+        return new Object[][]{
+                {new UserData.Builder()
+                        .withFirstName("Vitaly")
+                        .withLastName("Z")
+                        .withEmail("email")
+                        .withPassword("user1234")
+                        .build()
+                }
+        };
     }
 
 }
