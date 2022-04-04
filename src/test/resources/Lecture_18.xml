@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Lecture_18">
+<suite name="Lecture_18" parallel="tests">
     <parameter name="url" value="https://moodpanda.com/"/>
 
     <test name="Login Test">

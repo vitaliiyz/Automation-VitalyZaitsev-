@@ -1,5 +1,6 @@
 package BaseObjects;
 
+import com.codeborne.selenide.Configuration;
 import org.testng.ITestContext;
 import org.testng.annotations.BeforeTest;
 
@@ -14,6 +15,8 @@ public class SelenideBaseTest {
     @BeforeTest
     public void precondition(ITestContext context) {
         this.context = context;
+        Configuration.browser = "CHROME";
+        Configuration.headless = true;
     }
 
     protected <T> T getPage(Class<T> pageClass) {
