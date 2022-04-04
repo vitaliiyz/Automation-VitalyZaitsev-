@@ -10,15 +10,11 @@ import org.testng.annotations.Test;
 
 public class LoginPage_Test extends BaseTest {
 
-    LoginPage loginPage;
     UserData userData;
-    User user;
 
     @BeforeMethod
     public void precondition() {
         userData = new UserData();
-        loginPage = new LoginPage();
-
         getPage(LoginPage.class).getPage();
     }
 
