@@ -1,12 +1,15 @@
 package Lecture_15;
 
 import BaseObjects.BaseTest;
+import Configuration.PropertyReader;
 import SaucedemoPageObject.Pages.LoginPage;
 import SaucedemoPageObject.Pages.User;
 import SaucedemoPageObject.Pages.UserData;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import java.util.Properties;
 
 public class LoginTest extends BaseTest {
 
@@ -16,7 +19,7 @@ public class LoginTest extends BaseTest {
     @BeforeTest
     public void preconditions() {
         userData = new UserData();
-        loginPage = new LoginPage(driver);
+        loginPage = new LoginPage();
     }
 
     @Test(priority = 1)
@@ -30,7 +33,7 @@ public class LoginTest extends BaseTest {
                 .verifyErrorMsg();
     }
 
-    @Test(priority = 2, dataProvider = "data")
+    @Test(priority = 2, dataProvider = "data", enabled = false)
     public void loginTestByBuilder(User user) {
 
         loginPage
