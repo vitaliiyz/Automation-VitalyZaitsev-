@@ -16,7 +16,7 @@ public class LoginTest extends BaseTest {
     @BeforeTest
     public void preconditions() {
         userData = new UserData();
-        loginPage = new LoginPage(driver);
+        loginPage = new LoginPage();
     }
 
     @Test(priority = 1)
@@ -41,7 +41,7 @@ public class LoginTest extends BaseTest {
     @DataProvider
     public Object[][] data() {
         return new Object[][]{{
-                new User.Builder().withUserName("user").withPassword("password").build()
+                new User.UserBuilder().withUserName("user").withPassword("password").build()
         }};
     }
 }

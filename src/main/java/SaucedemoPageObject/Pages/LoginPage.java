@@ -2,7 +2,6 @@ package SaucedemoPageObject.Pages;
 
 import SaucedemoPageObject.BasePage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -11,7 +10,7 @@ import org.testng.Assert;
 
 public class LoginPage extends BasePage {
 
-    public LoginPage(WebDriver driver) {
+    public LoginPage() {
         PageFactory.initElements(driver, this);
     }
 
@@ -23,6 +22,9 @@ public class LoginPage extends BasePage {
 
     @FindBy(id = "login-button")
     WebElement loginButton;
+
+    @FindBy(className = "title")
+    WebElement title;
 
     private final By errorMsg = By.tagName("h3");
 
@@ -84,6 +86,11 @@ public class LoginPage extends BasePage {
 
     public LoginPage verifyErrorMsg() {
         Assert.assertEquals(getErrorMsgText(), incorrectCredentialsError);
+        return this;
+    }
+
+    public LoginPage verifyTitle() {
+        Assert.assertEquals(title.getText(), "PRODUCTS");
         return this;
     }
 
