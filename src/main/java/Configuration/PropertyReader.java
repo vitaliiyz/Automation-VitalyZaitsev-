@@ -5,8 +5,10 @@ import java.util.Properties;
 
 public class PropertyReader {
     private static Properties properties;
+    private String propertyName;
 
     public PropertyReader(String propertyName) {
+        this.propertyName = propertyName;
         properties = new Properties();
 
         try {
