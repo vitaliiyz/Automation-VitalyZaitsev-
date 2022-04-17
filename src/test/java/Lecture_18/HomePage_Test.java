@@ -11,7 +11,7 @@ public class HomePage_Test extends SelenideBaseTest {
     @Test(description = "Verifying of home page title, click link to the next page.")
     public void homePage_test(String linkText) {
         getPage(HomePage.class)
-//                .verifyTitle()
+                .verifyTitle()
                 .clickBtn(linkText);
     }
 }
