@@ -19,7 +19,7 @@ pipeline {
         stage('Test run') {
             steps {
                 echo "--------------------------------------Started ${env.SUITE}--------------------------------------"
-                bat 'mvn clean test -Dsuite=${env.SUITE}'
+                bat 'mvn clean install test -Dsuite=${env.SUITE}'
             }
         }
         stage('reports') {
