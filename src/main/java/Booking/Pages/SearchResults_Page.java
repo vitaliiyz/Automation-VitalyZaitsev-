@@ -6,7 +6,7 @@ import org.testng.Assert;
 
 public class SearchResults_Page extends BasePage {
 
-    private final By searchInput = By.cssSelector("#ss");
+    private final By searchInput = By.cssSelector("[placeholder ~= Where]");
     private final By searchButton = By.cssSelector("button[type = submit]");
     private final By hotelTitle = By.xpath("//div[@data-testid='property-card']//div[@data-testid='title']");
     private final By hotelRating = By.xpath("//div[@data-testid='property-card']//div[contains(@aria-label, 'Scored')]");
