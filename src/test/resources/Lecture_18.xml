@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Lecture_18" parallel="tests">
+    <parameter name="url" value="https://moodpanda.com/"/>
+
+    <test name="Login Test">
+        <parameter name="linkText" value="Get started"/>
+        <classes>
+            <class name="Lecture_18.HomePage_Test"/>
+            <class name="Lecture_18.Login_Test"/>
+        </classes>
+    </test>
+
+    <test name="Sign Up Test">
+        <parameter name="linkText" value="Sign up"/>
+        <classes>
+            <class name="Lecture_18.HomePage_Test"/>
+            <class name="Lecture_18.SignUp_Test"/>
+        </classes>
+    </test>
+</suite>

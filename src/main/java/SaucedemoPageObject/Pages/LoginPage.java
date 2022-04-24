@@ -23,6 +23,9 @@ public class LoginPage extends BasePage {
     @FindBy(id = "login-button")
     WebElement loginButton;
 
+    @FindBy(className = "title")
+    WebElement title;
+
     private final By errorMsg = By.tagName("h3");
 
     private final String username = "standard_user";
@@ -82,6 +85,11 @@ public class LoginPage extends BasePage {
 
     public LoginPage verifyErrorMsg() {
         Assert.assertEquals(getErrorMsgText(), incorrectCredentialsError);
+        return this;
+    }
+
+    public LoginPage verifyTitle() {
+        Assert.assertEquals(title.getText(), "PRODUCTS");
         return this;
     }
 

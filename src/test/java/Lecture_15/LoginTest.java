@@ -44,7 +44,7 @@ public class LoginTest extends BaseTest {
     @DataProvider
     public Object[][] data() {
         return new Object[][]{{
-                new User.Builder().withUserName("user").withPassword("password").build()
+                new User.UserBuilder().withUserName("user").withPassword("password").build()
         }};
     }
 }
