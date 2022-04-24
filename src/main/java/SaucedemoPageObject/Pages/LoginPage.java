@@ -28,13 +28,12 @@ public class LoginPage extends BasePage {
 
     private final By errorMsg = By.tagName("h3");
 
-    private final String url = "https://www.saucedemo.com";
     private final String username = "standard_user";
     private final String password = "secret_sauce";
     private final String incorrectCredentialsError = "Epic sadface: Username and password do not match any user in this service";
 
     public LoginPage getPage() {
-        driver.get(url);
+        driver.get(properties.getProperty("url"));
         return this;
     }
 

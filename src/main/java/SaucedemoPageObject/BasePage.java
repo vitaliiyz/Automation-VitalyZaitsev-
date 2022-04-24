@@ -1,18 +1,23 @@
 package SaucedemoPageObject;
 
 import BaseObjects.DriverCreation;
+import Configuration.PropertyReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.Properties;
+
 public abstract class BasePage {
     protected WebDriver driver;
+    protected Properties properties;
 
     private final By productName = By.className("inventory_item_name");
     private final By productPrice = By.className("inventory_item_price");
 
     protected BasePage() {
         this.driver = DriverCreation.getDriver();
+        properties = PropertyReader.getProperties();
     }
 
     protected WebElement findElement(By element) {
