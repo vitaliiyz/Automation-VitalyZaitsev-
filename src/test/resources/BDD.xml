@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="BDD_Tests">
+    <listeners>
+        <listener class-name="Utils.Listener"/>
+    </listeners>
+    <parameter name="url" value="https://www.booking.com/searchresults.en-gb.html"/>
+
+    <test name="Search Test">
+        <classes>
+            <class name="BDD_Tests.SearchOptions"/>
+        </classes>
+    </test>
+</suite>
