@@ -1,5 +1,6 @@
 package Utils;
 
+
 import BaseObjects.DriverCreation;
 import Configuration.PropertyReader;
 import org.testng.ITestContext;
@@ -15,11 +16,12 @@ public class Listener implements ITestListener {
     public void onStart(ITestContext context) {
         DriverCreation.createDriver();
         Listener.context = context;
-//        new PropertyReader(context.getSuite().getParameter("config") == null ? System.getProperty("config") : context.getSuite().getParameter("config"));
+        new PropertyReader(context.getSuite().getParameter("config") == null ? System.getProperty("config") : context.getSuite().getParameter("config"));
         properties = PropertyReader.getProperties();
     }
 
     public static ITestContext getContext() {
         return context;
     }
+
 }
